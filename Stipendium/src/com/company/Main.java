@@ -4,18 +4,20 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main {
 
     public static void main(String[] args) {
         try(FileReader reader = new FileReader("C:\\Users\\maxim\\IdeaProjects\\-My-exercises\\Stipendium\\Students.csv"))
         {
-            String text = "";
+            StringBuilder text = new StringBuilder();
             int c;
             while((c =reader.read())!=-1){
-                text += (char)c;
+                text.append((char) c);
             }
-            String[] array = text.split(",");
+            String[] array = text.toString().split(",");
             int quantity = 0;
             for (int i = 0; i < array.length; i++) {
                 if(i == 0){
@@ -33,10 +35,14 @@ public class Main {
                 Student student = new Student();
                 int notes = 0;
                 while (j < array.length){
-                    if (students.get(j).length() > 3 && !students.get(j).equals("TRUE") && !students.get(j).equals("FALSE")) {
+                    Pattern pattern = Pattern.compile("[а-яА-Я]+");
+                    Matcher matcher = pattern.matcher(students.get(j));
+                    if (matcher.find() && !students.get(j).equals("TRUE") && !students.get(j).equals("FALSE")) {
                         student.name = students.get(j);
                     }
-                    if(students.get(j).length() < 3 && !students.get(j).equals("TRUE") && !students.get(j).equals("FALSE")){
+                    pattern = Pattern.compile("[0-9]+");
+                    matcher = pattern.matcher(students.get(j));
+                    if(matcher.find() && !students.get(j).equals("TRUE") && !students.get(j).equals("FALSE")){
                         notes += Integer.parseInt(students.get(j));
                     }
                     if(students.get(j).equals("FALSE") && students.get(j).equals("TRUE")){
@@ -52,10 +58,10 @@ public class Main {
                 i++;
             }
             List<StipendiumStudent> stipendiumStudentPriorityList  = new ArrayList<>();
-            for (int k = 0; k < studentList.size(); k++) {
-                    double avgNote = studentList.get(k).notes / 5;
-                    StipendiumStudent stipendiumStudent = new StipendiumStudent(avgNote, studentList.get(k).name);
-                    stipendiumStudentPriorityList.add(stipendiumStudent);
+            for (Student student : studentList) {
+                double avgNote = student.notes / 5;
+                StipendiumStudent stipendiumStudent = new StipendiumStudent(avgNote, student.name);
+                stipendiumStudentPriorityList.add(stipendiumStudent);
 
             }
             double stipendiumQuantity = quantity * 40 / 100;
@@ -66,6 +72,10 @@ public class Main {
                     System.out.println(stipendiumStudentPriorityList.get(k).toString());
                     writer.append(stipendiumStudentPriorityList.get(k).toString());
                     writer.flush();
+                    if(k == stipendiumQuantity - 1){
+                        System.out.println("------------------");
+                        System.out.println("Прохідний балл на стипендію - " + stipendiumStudentPriorityList.get(k).avgNote);
+                    }
                 }
             }
 

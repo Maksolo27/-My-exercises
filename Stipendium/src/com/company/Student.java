@@ -8,11 +8,7 @@ public class Student {
     Student(){
 
     }
-    public Student(String name, int notes, boolean budged) {
-        this.name = name;
-        this.notes = notes;
-        this.budged = budged;
-    }
+
 
     @Override
     public String toString() {
