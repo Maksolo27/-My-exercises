@@ -8,15 +8,12 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        try(FileReader reader = new FileReader("guys.csv"))
+        try(FileReader reader = new FileReader("Students.csv"))
         {
-
             String text = "";
             int c;
             while((c =reader.read())!=-1){
-
                 text += (char)c;
-
             }
             String[] array = text.split(",");
             int quantity = 0;
