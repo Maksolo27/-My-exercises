@@ -45,7 +45,7 @@ public class Main {
                     if(matcher.find() && !students.get(j).equals("TRUE") && !students.get(j).equals("FALSE")){
                         notes += Integer.parseInt(students.get(j));
                     }
-                    if(students.get(j).equals("FALSE") && students.get(j).equals("TRUE")){
+                    if(students.get(j).equals("FALSE")){
                         student.budged = Boolean.getBoolean(students.get(j));
                     }
                     j++;
