@@ -8,7 +8,7 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        try(FileReader reader = new FileReader("Students.csv"))
+        try(FileReader reader = new FileReader("C:\\Users\\maxim\\IdeaProjects\\-My-exercises\\Stipendium\\Students.csv"))
         {
             String text = "";
             int c;
@@ -62,7 +62,7 @@ public class Main {
             stipendiumStudentPriorityList.sort(StipendiumStudent::compareTo);
             for (int k = 0; k < stipendiumStudentPriorityList.size(); k++) {
                 if(k < stipendiumQuantity) {
-                    FileWriter writer = new FileWriter("Rating.csv", true);
+                    FileWriter writer = new FileWriter("C:\\Users\\maxim\\IdeaProjects\\-My-exercises\\Stipendium\\Rating.csv", true);
                     System.out.println(stipendiumStudentPriorityList.get(k).toString());
                     writer.append(stipendiumStudentPriorityList.get(k).toString());
                     writer.flush();
