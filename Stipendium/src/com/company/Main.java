@@ -39,7 +39,7 @@ public class Main {
                     if(students.get(j).length() < 3 && !students.get(j).equals("TRUE") && !students.get(j).equals("FALSE")){
                         notes += Integer.parseInt(students.get(j));
                     }
-                    if(students.get(j).equals("TRUE") && students.get(j).equals("FALSE")){
+                    if(students.get(j).equals("FALSE") && students.get(j).equals("TRUE")){
                         student.budged = Boolean.getBoolean(students.get(j));
                     }
                     j++;
