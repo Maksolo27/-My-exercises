@@ -1,22 +1,23 @@
 package units;
 
+import dbWorkers.IncDAO;
+
+
 /**
  * Created by maxim on 21.04.2021.
  */
 public class Inc implements UnitConverter {
-    private static final double toMeter = 39.37;
-    private static final double toFoot = 12;
-    private static final double toSantimeter = 2.54;
 
     @Override
     public double convert(String convert, double value) {
+        IncDAO incDAO = (IncDAO) new IncDAO().getDAO();
         switch (convert){
             case "ft":
-                return value * toFoot;
+                return value * incDAO.getToFoot();
             case "sm":
-                return value * toSantimeter;
+                return value * incDAO.getToSantimeter();
             case "m":
-                return value * toMeter;
+                return value * incDAO.getToMeter();
         }
         return value;
     }

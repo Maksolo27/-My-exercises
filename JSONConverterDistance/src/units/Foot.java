@@ -1,23 +1,24 @@
 package units;
 
+import dbWorkers.FootDAO;
+
 /**
  * Created by maxim on 21.04.2021.
  */
 public class Foot implements UnitConverter {
-    private static final double toSantimeter = 0.0328;
-    private static final double toMeter = 0.32808;
-    private static final double toInch = 0.833;
 
     @Override
     public double convert(String convert, double value) {
+        FootDAO footDAO = (FootDAO) new FootDAO().getDAO();
         switch (convert){
             case "in":
-                return value * toInch;
+                return value * footDAO.getToInc();
             case "sm":
-                return value * toSantimeter;
+                return value * footDAO.getToSantimeter();
             case "m":
-                return value * toMeter;
+                return value * footDAO.getToMeter();
         }
         return value;
     }
+
 }
