@@ -44,13 +44,13 @@ public class IncDAO implements UnitDAO {
         List<IncDAO> all = new ArrayList<>();
         Connection connection = DBWorker.getConnection();
         try {
-            PreparedStatement statement = connection.prepareStatement("Select * from Inch");
+            PreparedStatement statement = connection.prepareStatement("Select * from Inc");
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()){
                 IncDAO incDAO = new IncDAO();
-                double toSantimeter = rs.getDouble(1);
-                double toFoot = rs.getDouble(2);
+                double toSantimeter = rs.getDouble(2);
+                double toFoot = rs.getDouble(1);
                 double toMeter = rs.getDouble(3);
                 incDAO.setToSantimeter(toSantimeter);
                 incDAO.setToFoot(toFoot);

@@ -13,7 +13,7 @@ public class Main {
 
     public static void main(String[] args) {
         registerDriver();
-        String jsonObj = "{'distance': {'unit': 'sm', 'value': 2}, 'convert_to': 'm'}";
+        String jsonObj = "{'distance': {'unit': 'in', 'value': 3}, 'convert_to': 'ft'}";
         Gson gson = new GsonBuilder().create();
         JsonDistance fromJsonDistance = gson.fromJson(jsonObj, JsonDistance.class);
         Unit unit = Unit.setUnit(fromJsonDistance.getDistance().getUnit());

@@ -18,7 +18,7 @@ public enum Unit {
             case "in":
                 un = INC;
                 break;
-            case "sm":
+            case "cm":
                 un = SANTIMETER;
                 break;
         }

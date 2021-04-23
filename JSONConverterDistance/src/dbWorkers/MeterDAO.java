@@ -50,9 +50,9 @@ public class MeterDAO implements UnitDAO{
 
             while (rs.next()){
                 MeterDAO meterDAO = new MeterDAO();
-                double toSantimeter = rs.getDouble(1);
-                double toFoot = rs.getDouble(2);
-                double toInch = rs.getDouble(3);
+                double toSantimeter = rs.getDouble(3);
+                double toFoot = rs.getDouble(1);
+                double toInch = rs.getDouble(2);
                 meterDAO.setToSantimeter(toSantimeter);
                 meterDAO.setToFoot(toFoot);
                 meterDAO.setToInc(toInch);
