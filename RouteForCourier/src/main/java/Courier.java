@@ -104,10 +104,9 @@ public class Courier {
         return nearestOrder;
     }
 
-    public void moveToNextPoint(double x, double y, String workStart){
+    public void moveToNextPoint(double x, double y){
         this.startX = x;
         this.startY = y;
-        this.workStart = workStart;
     }
 
     public double timeToNextPoint(double x, double y){

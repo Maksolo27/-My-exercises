@@ -67,6 +67,35 @@ public class Orders {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Orders orders = (Orders) o;
+
+        if (id != orders.id) return false;
+        if (Double.compare(orders.laititude, laititude) != 0) return false;
+        if (Double.compare(orders.longitude, longitude) != 0) return false;
+        if (delivery_from != null ? !delivery_from.equals(orders.delivery_from) : orders.delivery_from != null)
+            return false;
+        return delivery_to != null ? delivery_to.equals(orders.delivery_to) : orders.delivery_to == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = id;
+        temp = Double.doubleToLongBits(laititude);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(longitude);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + (delivery_from != null ? delivery_from.hashCode() : 0);
+        result = 31 * result + (delivery_to != null ? delivery_to.hashCode() : 0);
+        return result;
+    }
+
     public Orders(int id, double laititude, double longitude, String delivery_from, String delivery_to) {
         this.id = id;
         this.laititude = laititude;
