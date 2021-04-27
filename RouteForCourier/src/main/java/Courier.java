@@ -1,3 +1,4 @@
+import javax.persistence.Transient;
 import java.lang.reflect.Array;
 import java.util.*;
 
@@ -84,7 +85,7 @@ public class Courier {
                 '}';
     }
 
-    private double distanceToNextPoint(double x, double y){
+    public double distanceToNextPoint(double x, double y){
         double distance = Math.sqrt(((x - this.startX)*(x - this.startX)) + ((y - this.startY)*(y - this.startY)));
         return distance;
     }
@@ -94,20 +95,57 @@ public class Courier {
         double[] distances = new double[ordersList.size()];
         for (int i = 0; i < ordersList.size(); i++) {
             double distance =  distanceToNextPoint(ordersList.get(i).getLaititude(), ordersList.get(i).getLongitude());
-            System.out.println(ordersList.get(i));
-            System.out.println(distance);
             distances[i] = distance;
             distanceOrderMap.put(distance, ordersList.get(i));
         }
-        System.out.println("----------");
         Arrays.sort(distances);
-        Orders nearestOrder = null;
-        for (int i = distances.length - 1; i >= 0; i--) {
-            System.out.println(distances[i]);
-            nearestOrder = distanceOrderMap.get(distances[i]);
-            System.out.println(distanceOrderMap.get(distances[i]));
-        }
-
+        Orders nearestOrder;
+        nearestOrder = distanceOrderMap.get(distances[0]);
         return nearestOrder;
+    }
+
+    public void moveToNextPoint(double x, double y, String workStart){
+        this.startX = x;
+        this.startY = y;
+        this.workStart = workStart;
+    }
+
+    public double timeToNextPoint(double x, double y){
+        double distanceToNextPoint = distanceToNextPoint(x, y);
+        double time = distanceToNextPoint / this.courierSpeed;
+        return time;
+    }
+
+    public double parseTimeInMinutes(String time){
+        String stringHours = "";
+        String stringMinutes = "";
+        for (int i = 0; i < time.length(); i++) {
+            if(time.charAt(i) == ':'){
+                for (int j = i + 1; j < time.length() ; j++) {
+                    stringMinutes += time.charAt(j);
+                }
+                break;
+            }
+            stringHours += time.charAt(i);
+        }
+        int hours = Integer.valueOf(stringHours);
+        int minutes = hours * 60 + Integer.valueOf(stringMinutes);
+        return minutes;
+    }
+
+    public double getTimeInHours(double minutes){
+        double result = minutes / 60.0;
+        return result;
+    }
+
+    public String getTimeInNormalView(double minutes){
+        String result = "";
+        int hours = (int) (minutes / 60);
+        int resultMinutes = (int) (minutes % 60);
+        result += hours + ":" + resultMinutes;
+        return result;
+    }
+    public double timeInWaiting(double time){
+        return time;
     }
 }
