@@ -4,12 +4,14 @@ import com.company.gauss.Algorithm;
 import com.company.gauss.Equation;
 import com.company.gauss.LinearSystem;
 
+import java.util.Scanner;
+
 public class GaussMain {
     private static final int DEFAULT_EQUATIONS_NUMBER = 2;
     private static final int DEFAULT_VARIABLES_NUMBER = 2;
 
     public static void main(String args[]){
-        LinearSystem<Float, Equation> list = generateSystem();
+        LinearSystem<Float, Equation> list = randomGenerateSystem();
         printSystem(list);
         int i, j;
         Algorithm<Float, Equation> alg = new Algorithm<Float, Equation>(list);
@@ -37,6 +39,20 @@ public class GaussMain {
     public static LinearSystem<Float, Equation> generateSystem(){
         LinearSystem<Float, Equation> list = new LinearSystem<Float, Equation>();
         int i;
+        Scanner scanner = new Scanner(System.in);
+        for (i = 0; i < DEFAULT_EQUATIONS_NUMBER; i++){
+            System.out.println("Введите количество x:");
+            Equation eq = new Equation();
+            eq.userGenerate(scanner.nextInt());
+            list.push(eq);
+            scanner = new Scanner(System.in);
+        }
+        return list;
+    }
+
+    private static LinearSystem<Float, Equation> randomGenerateSystem(){
+        LinearSystem<Float, Equation> list = new LinearSystem<Float, Equation>();
+        int i;
         for (i = 0; i < DEFAULT_EQUATIONS_NUMBER; i++){
             Equation eq = new Equation();
             eq.generate(DEFAULT_VARIABLES_NUMBER + 1);
@@ -44,6 +60,7 @@ public class GaussMain {
         }
         return list;
     }
+
 
     public static void printSystem(LinearSystem<Float, Equation> system){
         for (int i = 0; i < system.size(); i++){
