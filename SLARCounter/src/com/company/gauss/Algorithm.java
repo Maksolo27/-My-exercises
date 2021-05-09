@@ -1,7 +1,5 @@
 package com.company.gauss;
 
-import com.company.LinearSystem;
-
 public class Algorithm<N extends Number, T extends Gauss<N, T>> {
     LinearSystem<N, T> list = null;
     public Algorithm(LinearSystem<N, T> system){
