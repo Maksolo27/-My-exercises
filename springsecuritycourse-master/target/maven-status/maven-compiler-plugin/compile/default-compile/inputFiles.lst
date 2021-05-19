@@ -1,0 +1,12 @@
+/Users/andrewfok/Desktop/springsecuritycourse-master/src/main/java/fok/security/demo/security/UserDetailsServiceImpl.java
+/Users/andrewfok/Desktop/springsecuritycourse-master/src/main/java/fok/security/demo/model/Status.java
+/Users/andrewfok/Desktop/springsecuritycourse-master/src/main/java/fok/security/demo/repository/UserRepository.java
+/Users/andrewfok/Desktop/springsecuritycourse-master/src/main/java/fok/security/demo/model/Developer.java
+/Users/andrewfok/Desktop/springsecuritycourse-master/src/main/java/fok/security/demo/security/SecurityUser.java
+/Users/andrewfok/Desktop/springsecuritycourse-master/src/main/java/fok/security/demo/controller/AuthController.java
+/Users/andrewfok/Desktop/springsecuritycourse-master/src/main/java/fok/security/demo/model/Permission.java
+/Users/andrewfok/Desktop/springsecuritycourse-master/src/main/java/fok/security/demo/SpringSecurityDemoApplication.java
+/Users/andrewfok/Desktop/springsecuritycourse-master/src/main/java/fok/security/demo/model/User.java
+/Users/andrewfok/Desktop/springsecuritycourse-master/src/main/java/fok/security/demo/config/SecurityConfig.java
+/Users/andrewfok/Desktop/springsecuritycourse-master/src/main/java/fok/security/demo/model/Role.java
+/Users/andrewfok/Desktop/springsecuritycourse-master/src/main/java/fok/security/demo/rest/DeveloperRestControllerV1.java

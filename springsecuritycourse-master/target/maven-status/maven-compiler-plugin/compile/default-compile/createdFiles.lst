@@ -1,0 +1,12 @@
+fok/security/demo/controller/AuthController.class
+fok/security/demo/SpringSecurityDemoApplication.class
+fok/security/demo/rest/DeveloperRestControllerV1.class
+fok/security/demo/model/Developer.class
+fok/security/demo/config/SecurityConfig.class
+fok/security/demo/model/Role.class
+fok/security/demo/repository/UserRepository.class
+fok/security/demo/security/SecurityUser.class
+fok/security/demo/model/User.class
+fok/security/demo/model/Status.class
+fok/security/demo/security/UserDetailsServiceImpl.class
+fok/security/demo/model/Permission.class
